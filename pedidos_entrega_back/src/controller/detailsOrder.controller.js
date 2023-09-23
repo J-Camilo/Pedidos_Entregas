@@ -1,7 +1,7 @@
 import { webConnection, sql } from "../database/conection";
 import query from "../database/query"
 
-//trae todos los pedido
+//trae todos los detalle de pedido
 export const getOrderDetail = async (req, res) => {
     try {
         const pool = await webConnection();
@@ -15,7 +15,7 @@ export const getOrderDetail = async (req, res) => {
     }
 }
 
-// crea un nuevo pedido
+// crea un nuevo detalle de pedido
 export const CreateOrderDetail = async (req, res) => {
     let { PedidoId, NombreProducto, DescripcionProducto, Precio, Iva, Cantidad, CodigoProducto, Marca, Categoria } = req.body
 
@@ -42,7 +42,7 @@ export const CreateOrderDetail = async (req, res) => {
     }
 }
 
-// optiene un pedido
+// optiene un detalle de pedido
 export const IdgetOrderDetail = async (req, res) => {
     const { id } = req.params;
     const pool = await webConnection();
@@ -60,7 +60,7 @@ export const IdgetOrderDetail = async (req, res) => {
     }
 }
 
-// elimina un solo pedido
+// elimina un solo detalle de pedido
 export const DeleteOrderDetail = async (req, res) => {
     const { id } = req.params;
     const pool = await webConnection();
@@ -78,7 +78,7 @@ export const DeleteOrderDetail = async (req, res) => {
     }
 }
 
-// contar los productos del pedido
+// contar los productos detalle de del pedido
 export const CountController = async (req, res) => {
     const pool = await webConnection();
 
@@ -95,7 +95,7 @@ export const CountController = async (req, res) => {
 }
 
 
-// actualizar cada pedido
+// actualizar cada detalle de pedido
 export const UpdateOrderDetail = async (req, res) => {
     let { PedidoId, NombreProducto, DescripcionProducto, Precio, Iva, Cantidad, CodigoProducto, Marca, Categoria } = req.body
     const { id } = req.params;

@@ -11,13 +11,14 @@ import carRoutes from "./routes/car.controller";
 import detailCarRoutes from "./routes/detailsCar.router";
 import orderRoutes from "./routes/order.router";
 import detailOrderRoutes from "./routes/detailsOrder.router";
+import salesRoutes from "./routes/dailySale.router";
 
 const app = express();
 
-// settings 
+//---------- settings 
 app.set('port', config.port || 4000);
 
-//middleware
+//----------middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
@@ -39,7 +40,8 @@ app.use(detailCarRoutes);
 app.use(orderRoutes); 
 app.use(detailOrderRoutes); 
   
-//_____________ventas___________
+//_____________ventas diarias___________
+app.use(salesRoutes); 
 
 
 export default app;

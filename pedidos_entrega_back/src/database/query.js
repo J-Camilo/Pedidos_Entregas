@@ -71,7 +71,7 @@ export default {
     createNewOrder: "INSERT INTO Pedido ( NumeroOrden, FechaRegistro, TotalPrecio, TotalIva, Departamento, Ciudad, Barrio, DireccionEntrega, ClienteId, EmpleadoId,  EntregadorId, Observacion) VALUES (@NumeroOrden, GETDATE(), @TotalPrecio, @TotalIva, @Departamento, @Ciudad, @Barrio, @DireccionEntrega, @ClienteId, @EmpleadoId,  @EntregadorId, @Observacion)",
     IdOrder: "SELECT * FROM Pedido WHERE Id = @id",
     CountOrder: "SELECT COUNT(*) FROM Pedido",
-    // UpdateOrder: No se esta usando
+    // UpdateOrder: unused
     DeleteOrder: "DELETE FROM Pedido WHERE Id = @id",
 
     //detailOrder
@@ -82,9 +82,13 @@ export default {
     UpdateOrderDetail: "UPDATE DetallePedido SET PedidoId = @PedidoId, NombreProducto = @NombreProducto, DescripcionProducto = @DescripcionProducto, Precio = @Precio, Iva = @Iva, Cantidad = @Cantidad, CodigoProducto = @CodigoProducto, Marca = @Marca, Categoria = @Categoria WHERE Id = @id",
     DeleteOrderDetail: "DELETE FROM DetallePedido WHERE Id = @id",
 
-
-    //buy
-    
+    //sales
+    getSales: 'SELECT * FROM VentasDiarias',
+    createNewSales: "INSERT INTO VentasDiarias (FechaVenta, CantidadPedidos, TotalPesos) VALUES (GETDATE(), @CantidadPedidos, @TotalPesos)",
+    IdSales: "SELECT * FROM VentasDiarias WHERE Id = @id",
+    CountSales: "SELECT COUNT(*) FROM VentasDiarias",
+    UpdateSales: "UPDATE VentasDiarias SET CantidadPedidos = @CantidadPedidos, TotalPesos = @TotalPesos WHERE Id = @id",
+    DeleteSales: "DELETE FROM VentasDiarias WHERE Id = @id",
 
 
     //municipio
