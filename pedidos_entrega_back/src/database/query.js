@@ -42,41 +42,40 @@ export default {
     UpdateWorkers: "UPDATE Empleado SET Nombre = @Nombre, Apellidos = @Apellidos, Cedula = @Cedula, Direccion = @Direccion, Departamento = @Departamento, Municipio = @Municipio, Barrio = @Barrio, TipoEmpleadoId = @TipoEmpleadoId, Salario = @Salario WHERE Id = @id",
     DeleteWorkers: "DELETE FROM Empleado WHERE Id = @id",
 
-    //order 
-
-    //detailOrder
-
-
-
-
-
-
-    //car
-    getCar: 'SELECT * FROM Carrito',
-    createNewCar: "INSERT INTO Carrito (ClienteId, FechaCreacion) VALUES (ClienteId, GETDATE())",
-    IdCar: "SELECT * FROM Carrito WHERE Id = @id",
-    CountCar: "SELECT COUNT(*) FROM Carrito", 
-    UpdateCar: "UPDATE Carrito SET ClienteId = @ClienteId, FechaCreacion = @FechaCreacion WHERE Id = @id",
-    DeleteCar: "DELETE FROM Carrito WHERE Id = @id",
-
-
-    //detailcar
-    getCar: 'SELECT * FROM DetalleCarrito',
-    createNewCar: "INSERT INTO DetalleCarrito (CarritoId, ProductoId, Cantidad) VALUES (@CarritoId, @ProductoId, @Cantidad)",
-    IdCar: "SELECT * FROM DetalleCarrito WHERE Id = @id",
-    CountCar: "SELECT COUNT(*) FROM DetalleCarrito", 
-    UpdateCar: "UPDATE DetalleCarrito SET CarritoId = @CarritoId, ProductoId = @ProductoId, Cantidad = @Cantidad WHERE Id = @id",
-    DeleteCar: "DELETE FROM DetalleCarrito WHERE Id = @id",
-
-
-
-    
-
     //User
     getUser: 'SELECT * FROM Usuario',
     createNewUser: "INSERT INTO Usuario (EmpleadoId, Usuario, Contraseña, FechaRegistro) VALUES (@EmpleadoId, @Usuario, @Contraseña, GETDATE())",
     IdUser: "SELECT * FROM Usuario WHERE Id = @id",
     CountUser: "SELECT COUNT(*) FROM Usuario", 
-    UpdateUser: "UPDATE Usuario SET Nombre = EmpleadoId = @EmpleadoId, Usuario = @Usuario, Contraseña = @Contraseña, FechaRegistro = @FechaRegistro WHERE Id = @id",
+    UpdateUser: "UPDATE Usuario SET  EmpleadoId = @EmpleadoId, Usuario = @Usuario, Contraseña = @Contraseña WHERE Id = @id",
     DeleteUser: "DELETE FROM Usuario WHERE Id = @id",
+
+
+    //order 
+
+    //detailOrder
+
+
+    //car
+    getCar: 'SELECT * FROM Carrito',
+    createNewCar: "INSERT INTO Carrito (ClienteId, FechaCreacion) VALUES (@ClienteId, GETDATE())",
+    IdCar: "SELECT * FROM Carrito WHERE Id = @id",
+    CountCar: "SELECT COUNT(*) FROM Carrito", 
+    UpdateCar: "UPDATE Carrito SET ClienteId = @ClienteId WHERE Id = @id",
+    DeleteCar: "DELETE FROM Carrito WHERE Id = @id",
+  
+
+    //detailcar
+    // getCar: 'SELECT * FROM DetalleCarrito',
+    // createNewCar: "INSERT INTO DetalleCarrito (CarritoId, ProductoId, Cantidad) VALUES (@CarritoId, @ProductoId, @Cantidad)",
+    // IdCar: "SELECT * FROM DetalleCarrito WHERE Id = @id",
+    // CountCar: "SELECT COUNT(*) FROM DetalleCarrito", 
+    // UpdateCar: "UPDATE DetalleCarrito SET CarritoId = @CarritoId, ProductoId = @ProductoId, Cantidad = @Cantidad WHERE Id = @id",
+    // DeleteCar: "DELETE FROM DetalleCarrito WHERE Id = @id",
+
+
+
+
+
+
 }
