@@ -69,6 +69,9 @@ export default {
     DeleteCar: "DELETE FROM DetalleCarrito WHERE Id = @id",
 
 
+
+    
+
     //User
     getUser: 'SELECT * FROM Usuario',
     createNewUser: "INSERT INTO Usuario (EmpleadoId, Usuario, Contraseña, FechaRegistro) VALUES (@EmpleadoId, @Usuario, @Contraseña, GETDATE())",

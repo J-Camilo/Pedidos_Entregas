@@ -6,6 +6,7 @@ import categoryRoutes from "./routes/category.router";
 import brandRoutes from "./routes/brand.router";
 import workersRoutes from "./routes/work.router";
 import clientRoutes from "./routes/client.router";
+import UserRoutes from "./routes/user.router";
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(categoryRoutes);
 app.use(brandRoutes);
 app.use(workersRoutes);
 app.use(clientRoutes);
+app.use(UserRoutes);
  
   
 
