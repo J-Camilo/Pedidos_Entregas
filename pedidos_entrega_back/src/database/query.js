@@ -1,6 +1,6 @@
 export default {
 
-    //________________________ Consults _______________________________
+    //____________________________ Consults ________________________________________
 
     //products
     getProducts: 'SELECT * FROM Producto',
@@ -66,18 +66,27 @@ export default {
     UpdateDetailcar: "UPDATE DetalleCarrito SET CarritoId = @CarritoId, ProductoId = @ProductoId, Cantidad = @Cantidad WHERE Id = @id",
     DeleteDetailcar: "DELETE FROM DetalleCarrito WHERE Id = @id",
 
-
-
     //order 
     getOrder: 'SELECT * FROM Pedido',
     createNewOrder: "INSERT INTO Pedido ( NumeroOrden, FechaRegistro, TotalPrecio, TotalIva, Departamento, Ciudad, Barrio, DireccionEntrega, ClienteId, EmpleadoId,  EntregadorId, Observacion) VALUES (@NumeroOrden, GETDATE(), @TotalPrecio, @TotalIva, @Departamento, @Ciudad, @Barrio, @DireccionEntrega, @ClienteId, @EmpleadoId,  @EntregadorId, @Observacion)",
     IdOrder: "SELECT * FROM Pedido WHERE Id = @id",
     CountOrder: "SELECT COUNT(*) FROM Pedido",
-    // UpdateOrder: 
+    // UpdateOrder: No se esta usando
     DeleteOrder: "DELETE FROM Pedido WHERE Id = @id",
 
-
     //detailOrder
+    getOrderDetail: 'SELECT * FROM DetallePedido',
+    createNewOrderDetail: "INSERT INTO DetallePedido (PedidoId, NombreProducto, DescripcionProducto, Precio, Iva, Cantidad, CodigoProducto, Marca, Categoria) VALUES (@PedidoId, @NombreProducto, @DescripcionProducto, @Precio, @Iva, @Cantidad, @CodigoProducto, @Marca, @Categoria)",
+    IdOrderDetail: "SELECT * FROM DetallePedido WHERE Id = @id",
+    CountOrderDetail: "SELECT COUNT(*) FROM DetallePedido",
+    UpdateOrderDetail: "UPDATE DetallePedido SET PedidoId = @PedidoId, NombreProducto = @NombreProducto, DescripcionProducto = @DescripcionProducto, Precio = @Precio, Iva = @Iva, Cantidad = @Cantidad, CodigoProducto = @CodigoProducto, Marca = @Marca, Categoria = @Categoria WHERE Id = @id",
+    DeleteOrderDetail: "DELETE FROM DetallePedido WHERE Id = @id",
 
 
+    //buy
+    
+
+
+    //municipio
+    //departamento
 }

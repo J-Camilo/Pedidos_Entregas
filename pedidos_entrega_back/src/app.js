@@ -10,11 +10,12 @@ import userRoutes from "./routes/user.router";
 import carRoutes from "./routes/car.controller";
 import detailCarRoutes from "./routes/detailsCar.router";
 import orderRoutes from "./routes/order.router";
+import detailOrderRoutes from "./routes/detailsOrder.router";
 
 const app = express();
 
 // settings 
-app.set('port', config.port);
+app.set('port', config.port || 4000);
 
 //middleware
 app.use(express.json());
@@ -36,6 +37,9 @@ app.use(detailCarRoutes);
 
 //_____________Pedidos___________
 app.use(orderRoutes); 
+app.use(detailOrderRoutes); 
   
+//_____________ventas___________
+
 
 export default app;
