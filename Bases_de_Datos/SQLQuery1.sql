@@ -2,8 +2,6 @@ CREATE DATABASE DB_Pedidos_entregas;
 
 use DB_Pedidos_entregas;
 
-select * from Pedido
-
 
 -- Tabla TipoEmpleado
 CREATE TABLE TipoEmpleado (

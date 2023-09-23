@@ -12,6 +12,8 @@ import detailCarRoutes from "./routes/detailsCar.router";
 import orderRoutes from "./routes/order.router";
 import detailOrderRoutes from "./routes/detailsOrder.router";
 import salesRoutes from "./routes/dailySale.router";
+import muniRoutes from "./routes/municipality.router";
+import depRoutes from "./routes/deparment.router";
 
 const app = express();
 
@@ -42,6 +44,10 @@ app.use(detailOrderRoutes);
   
 //_____________ventas diarias___________
 app.use(salesRoutes); 
+
+//_____________municipio y departamento___________
+app.use(muniRoutes); 
+app.use(depRoutes); 
 
 
 export default app;

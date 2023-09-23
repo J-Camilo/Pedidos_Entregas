@@ -91,6 +91,19 @@ export default {
     DeleteSales: "DELETE FROM VentasDiarias WHERE Id = @id",
 
 
-    //municipio
-    //departamento
+    //municipality
+    getMunicipality: 'SELECT * FROM Municipio',
+    // createNewSales: Unused
+    IdMunicipality: "SELECT * FROM Municipio WHERE Id = @id",
+    CountMunicipality: "SELECT COUNT(*) FROM Municipio",
+    // UpdateSales: Unused
+    // DeleteMunicipality: Unused
+
+    //departament
+    getDep: 'SELECT * FROM Departamento',
+    // createNewSales: Unused
+    IdDep: "SELECT * FROM Departamento WHERE Id = @id",
+    CountDep: "SELECT COUNT(*) FROM Departamento",
+    // UpdateSales: Unused
+    // DeleteSales: Unused
 }
