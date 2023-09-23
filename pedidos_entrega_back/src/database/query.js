@@ -66,16 +66,16 @@ export default {
   
 
     //detailcar
-    // getCar: 'SELECT * FROM DetalleCarrito',
-    // createNewCar: "INSERT INTO DetalleCarrito (CarritoId, ProductoId, Cantidad) VALUES (@CarritoId, @ProductoId, @Cantidad)",
-    // IdCar: "SELECT * FROM DetalleCarrito WHERE Id = @id",
-    // CountCar: "SELECT COUNT(*) FROM DetalleCarrito", 
-    // UpdateCar: "UPDATE DetalleCarrito SET CarritoId = @CarritoId, ProductoId = @ProductoId, Cantidad = @Cantidad WHERE Id = @id",
-    // DeleteCar: "DELETE FROM DetalleCarrito WHERE Id = @id",
+    getDetailcar: 'SELECT * FROM DetalleCarrito',
+    createNewDetailcar: "INSERT INTO DetalleCarrito (CarritoId, ProductoId, Cantidad) VALUES (@CarritoId, @ProductoId, @Cantidad)",
+    IdDetailcar: "SELECT * FROM DetalleCarrito WHERE Id = @id",
+    CountDetailcar: "SELECT COUNT(*) FROM DetalleCarrito", 
+    UpdateDetailcar: "UPDATE DetalleCarrito SET CarritoId = @CarritoId, ProductoId = @ProductoId, Cantidad = @Cantidad WHERE Id = @id",
+    DeleteDetailcar: "DELETE FROM DetalleCarrito WHERE Id = @id",
 
 
 
-
+ 
 
 
 }

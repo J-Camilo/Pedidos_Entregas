@@ -8,6 +8,7 @@ import workersRoutes from "./routes/work.router";
 import clientRoutes from "./routes/client.router";
 import userRoutes from "./routes/user.router";
 import carRoutes from "./routes/car.controller";
+import detailCarRoutes from "./routes/detailsCar.router";
 
 const app = express();
 
@@ -17,14 +18,22 @@ app.set('port', config.port);
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-//________________________
+
+//___________Productos_____________
 app.use(productsRoutes);
 app.use(categoryRoutes);
 app.use(brandRoutes);
+
+//_____________Trabajadores___________
 app.use(workersRoutes);
 app.use(clientRoutes);
 app.use(userRoutes);
+
+//___________Carrito_____________
 app.use(carRoutes);
+app.use(detailCarRoutes); 
+
+//_____________Pedidos___________
  
   
 
