@@ -9,6 +9,7 @@ import clientRoutes from "./routes/client.router";
 import userRoutes from "./routes/user.router";
 import carRoutes from "./routes/car.controller";
 import detailCarRoutes from "./routes/detailsCar.router";
+import orderRoutes from "./routes/order.router";
 
 const app = express();
 
@@ -34,7 +35,7 @@ app.use(carRoutes);
 app.use(detailCarRoutes); 
 
 //_____________Pedidos___________
- 
+app.use(orderRoutes); 
   
 
 export default app;

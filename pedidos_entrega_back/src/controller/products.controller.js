@@ -118,7 +118,7 @@ export const UpdateProduct = async (req, res) => {
         .input("Precio", sql.Decimal, Precio)
         .query(query.UpdateProduct);
 
-    res.json( Codigo, Nombre, Descripcion, Marca, Categoria, CantidadDisponible, Habilitado, CantidadVentas, Iva, Precio );
+    res.json({Codigo, Nombre, Descripcion, Marca, Categoria, CantidadDisponible, Habilitado, CantidadVentas, Iva, Precio});
 
     // try {
 
