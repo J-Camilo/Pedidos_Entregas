@@ -1,0 +1,5 @@
+#no se muestran las variables de entorno
+.env
+
+#se evitan los modulos 
+node_modules
