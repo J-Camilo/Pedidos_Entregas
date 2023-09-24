@@ -1,0 +1,65 @@
+.ContentCardMain {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.cardProduct {
+    height: auto;
+    font-size: 25px;
+    background-color: white;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CardAddSon {
+    width: 40px;
+    background-color: rgb(187, 187, 187);
+    border-radius: 100%;
+    padding: 20px;
+    margin: 50px;
+    text-align: center;
+    transition: all 300ms;
+    font-size: 30px;
+}
+
+.CardAddSon:hover {
+    background-color: rgb(170, 255, 175);
+    transition: all 300ms;
+}
+
+
+.buy {
+    background-color: rgb(104, 255, 104);
+    border-radius: 10px;
+    padding: 5px;
+    border: none;
+    transition: all 300ms;
+    font-size: 20px;
+    margin: 10px;
+}
+
+.buy:hover {
+    background-color: rgb(39, 255, 39);
+    transition: all 300ms;
+}
+
+.add {
+    background-color: rgb(255, 120, 120);
+    border-radius: 10px;
+    padding: 5px;
+    transition: all 300ms;
+    border: none;
+    margin: 10px;
+    font-size: 20px;
+}
+
+.add:hover {
+    background-color: rgb(255, 25, 25);
+    transition: all 300ms;
+}

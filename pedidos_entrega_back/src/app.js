@@ -1,5 +1,6 @@
-import express  from "express";
+import express from "express";
 import config from "./config";
+// import  jwt  from "jsonwebtoken";
 
 import productsRoutes from "./routes/products.route";
 import categoryRoutes from "./routes/category.router";
@@ -17,16 +18,20 @@ import depRoutes from "./routes/deparment.router";
 
 const app = express();
 
+// Middleware para verificar el token JWT
+
+
+
 //---------- settings 
 app.set('port', config.port || 4000);
 
 //----------middleware
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 
-//___________Productos_____________
-app.use(productsRoutes);
-app.use(categoryRoutes);
+//___________Productos_____________ 
+app.use('/api', productsRoutes);
+app.use('/api', categoryRoutes);
 app.use(brandRoutes);
 
 //_____________Trabajadores___________
@@ -36,18 +41,18 @@ app.use(userRoutes);
 
 //___________Carrito_____________
 app.use(carRoutes);
-app.use(detailCarRoutes); 
+app.use(detailCarRoutes);
 
 //_____________Pedidos___________
-app.use(orderRoutes); 
-app.use(detailOrderRoutes); 
-  
+app.use(orderRoutes);
+app.use(detailOrderRoutes);
+
 //_____________ventas diarias___________
-app.use(salesRoutes); 
+app.use(salesRoutes);
 
 //_____________municipio y departamento___________
-app.use(muniRoutes); 
-app.use(depRoutes); 
+app.use(muniRoutes);
+app.use(depRoutes);
 
 
 export default app;
