@@ -40,9 +40,7 @@ export const Login = () => {
             </div>  */}
 
 
-            <div className='SubtText'>
-                <h2>Ingresa tus datos</h2>
-            </div>
+
 
             <FuntionLogin/>
     </>

@@ -56,7 +56,7 @@ export default {
     IdCar: "SELECT * FROM Carrito WHERE Id = @id",
     CountCar: "SELECT COUNT(*) FROM Carrito",
     UpdateCar: "UPDATE Carrito SET ClienteId = @ClienteId WHERE Id = @id",
-    DeleteCar: "DELETE FROM Carrito WHERE Id = @id",
+    DeleteCar: "DELETE FROM Carrito WHERE Id = @id", 
 
     //detailcar
     getDetailcar: 'SELECT * FROM DetalleCarrito',

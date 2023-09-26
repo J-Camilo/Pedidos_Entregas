@@ -45,7 +45,7 @@ export const Car = () => {
                 <h2>Tus productos agregados</h2>
             </div>
 
-            <div className='cardGeneral'>
+            <div className='cardGeneralCar'>
                     <b><p>Nombre: </p></b>
                     <b><p>Marca: </p></b>
                     <b><p>Cantidad: </p></b>

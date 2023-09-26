@@ -20,10 +20,10 @@ export const CreateProducts = async (req, res) => {
     let { id, Codigo, Nombre, Descripcion, Marca, Categoria, CantidadDisponible, Habilitado, CantidadVentas, Iva, Precio } = req.body
 
     try {
-        const pool = await webConnection();
+        const pool = await webConnection(); 
         await pool
             .request()
-            .input("id", sql.Int, id)
+            .input("Id", sql.Int, id)
             .input("Codigo", sql.VarChar, Codigo)
             .input("Nombre", sql.VarChar, Nombre)
             .input("Descripcion", sql.Text, Descripcion)
@@ -34,7 +34,7 @@ export const CreateProducts = async (req, res) => {
             .input("CantidadVentas", sql.Int, CantidadVentas)
             .input("Iva", sql.Decimal, Iva)
             .input("Precio", sql.Decimal, Precio)
-            .query(query.createNewProduct);
+            .query(query.createNewProduct);  
 
         res.json({ id, Codigo, Nombre, Descripcion, Marca, Categoria, CantidadDisponible, Habilitado, CantidadVentas, Iva, Precio })
 

@@ -4,6 +4,11 @@ export const Data = () => {
 
   const See = () => { document.getElementById("postDataMain").style.display = 'flex'; }
 
+
+  
+
+
+
   const Ocult = () => {
     document.getElementById("postDataMain").style.display = 'none';
 
@@ -106,7 +111,7 @@ export const Data = () => {
         <div className='postData'>
           <h2>Ingresa tus datos</h2><hr />
           <form>
-            <label htmlFor="name">Nombre:</label>
+            <label htmlFor="name">Nombre</label>
             <input
               type="text"
               id="name"
@@ -114,9 +119,9 @@ export const Data = () => {
               required
               value={name}
               onChange={handleNameChange}
-            /><br />
+            />
 
-            <label htmlFor="lastName">Apellido:</label>
+            <label htmlFor="lastName">Apellido</label>
             <input
               type="text"
               id="lastName"
@@ -124,9 +129,9 @@ export const Data = () => {
               required
               value={lastName}
               onChange={handleLastNameChange}
-            /><br />
+            />
 
-            <label htmlFor="idNumber">Cedula:</label>
+            <label htmlFor="idNumber">Cedula</label>
             <input
               type="text"
               id="idNumber"
@@ -134,9 +139,9 @@ export const Data = () => {
               required
               value={idNumber}
               onChange={handleIdNumberChange}
-            /><br />
+            />
 
-            <label htmlFor="address">Direccion:</label>
+            <label htmlFor="address">Direccion</label>
             <input
               type="text"
               id="address"
@@ -144,9 +149,9 @@ export const Data = () => {
               required
               value={address}
               onChange={handleAddressChange}
-            /><br />
+            />
 
-            <label htmlFor="department">Departmento:</label>
+            <label htmlFor="department">Departmento</label>
             <input
               type="text"
               id="department"
@@ -154,9 +159,9 @@ export const Data = () => {
               required
               value={department}
               onChange={handleDepartmentChange}
-            /><br />
+            />
 
-            <label htmlFor="municipality">Municipio:</label>
+            <label htmlFor="municipality">Municipio</label>
             <input
               type="text"
               id="municipality"
@@ -164,9 +169,9 @@ export const Data = () => {
               required
               value={municipality}
               onChange={handleMunicipalityChange}
-            /><br />
+            />
 
-            <label htmlFor="neighborhood">Barrio:</label>
+            <label htmlFor="neighborhood">Barrio</label>
             <input
               type="text"
               id="neighborhood"
@@ -174,9 +179,9 @@ export const Data = () => {
               required
               value={neighborhood}
               onChange={handleNeighborhoodChange}
-            /><br />
+            />
 
-            <label htmlFor="birthDate">Fecha de nacimiento:</label>
+            <label htmlFor="birthDate">Fecha de nacimiento</label>
             <input
               type="date"
               id="birthDate"
@@ -184,9 +189,9 @@ export const Data = () => {
               required
               value={birthDate}
               onChange={handleBirthDateChange}
-            /><br />
+            />
 
-            <label htmlFor="phoneNumber">telefono:</label>
+            <label htmlFor="phoneNumber">Telefono</label>
             <input
               type="tel"
               id="phoneNumber"
@@ -195,7 +200,7 @@ export const Data = () => {
 
               value={phoneNumber}
               onChange={handlePhoneNumberChange}
-            /><br />
+            />
 
 
             <button type='submit' className='buy'>Agregar</button>
