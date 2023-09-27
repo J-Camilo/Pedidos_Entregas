@@ -1,6 +1,7 @@
 import React from 'react';
 import './Home.css'
 import { Animation } from '../../Ui/Animation/Animation';
+import { Logo } from '../../Ui/Logo/Logo';
 
 
 /*___________________________Components_________________________ */
@@ -60,7 +61,7 @@ export const Home = () => {
                         </div>
             }
 
-
+            <Logo />
             <footer>
                 <div className='footer'>By Juan Camilo Fong Leon © 2023</div>
             </footer>

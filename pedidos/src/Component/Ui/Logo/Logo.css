@@ -1,0 +1,156 @@
+.ContentMainLogo {
+    margin: 130px auto;
+    justify-content: center;
+    width: 200px;
+}
+
+.img-owner {
+    width: 100%;
+    top: 45px;
+    z-index: 9;
+    /* position: relative; */
+    border-radius: 100%;
+}
+
+.logo {
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+.logo div {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+}
+
+.logo div {
+    width: 160px;
+    height: 160px;
+    margin: 20px;
+    border-radius: 1.5rem;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    mix-blend-mode: multiply;
+    -webkit-animation: 2s cubic-bezier(0.66, -0.7, 0.27, 1.6) infinite;
+    animation: 2s cubic-bezier(0.66, -0.7, 0.27, 1.6) infinite;
+}
+
+.logo div:nth-child(1) {
+    background-color: #ffffff;
+    -webkit-animation-name: rotate-1;
+    animation-name: rotate-1;
+}
+
+.logo div:nth-child(2) {
+    background-color: #ffffff;
+    -webkit-animation-name: rotate-2;
+    animation-name: rotate-2;
+}
+
+.logo div:nth-child(3) {
+    background-color: rgb(255, 255, 255);
+    -webkit-animation-name: rotate-3;
+    animation-name: rotate-3;
+}
+
+/*------------------------ Key frames -------------------------*/
+
+@keyframes animate-home {
+    0% {
+        width: 0px;
+        height: 10px;
+        border-radius: 100%;
+    }
+
+    100% {
+        width: 100%;
+        height: 75%;
+    }
+}
+
+@keyframes animate-opacity-son {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes animate {
+    0% {
+        background-position: -500%;
+    }
+
+    100% {
+        background-position: 500%;
+    }
+}
+
+@keyframes animateGlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/*---------------- Key frames Logo ----------------*/
+@-webkit-keyframes rotate-1 {
+    to {
+        -webkit-transform: rotate(135deg);
+        transform: rotate(135deg);
+    }
+}
+
+@keyframes rotate-1 {
+    to {
+        -webkit-transform: rotate(135deg);
+        transform: rotate(135deg);
+    }
+}
+
+@-webkit-keyframes rotate-2 {
+    to {
+        -webkit-transform: rotate(225deg);
+        transform: rotate(225deg);
+    }
+}
+
+@keyframes rotate-2 {
+    to {
+        -webkit-transform: rotate(225deg);
+        transform: rotate(225deg);
+    }
+}
+
+@-webkit-keyframes rotate-3 {
+    to {
+        -webkit-transform: rotate(315deg);
+        transform: rotate(315deg);
+    }
+}
+
+@keyframes rotate-3 {
+    to {
+        -webkit-transform: rotate(315deg);
+        transform: rotate(315deg);
+    }
+}
+
+
+/*------------------------ magin table -------------------------*/
+
+@media (max-width: 767px) and (min-height: 1023px) {}
+
+/*------------------------ magin mobile -------------------------*/
+
+@media (max-width: 767px) {}
