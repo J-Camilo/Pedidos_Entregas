@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Animation } from '../../Ui/Animation/Animation';
-
+import Swal from 'sweetalert2';
 
 export const Order = () => {
 
@@ -78,7 +78,7 @@ export const Order = () => {
                 }, 1000);
             } else {
                 // El servidor respondió con un código de estado inesperado.
-                console.error(`Error al cancelar el pedido. Código de estado: ${response.status}`);
+                console.error(`Status al cancelar el pedido. Código de estado: ${response.status}`);
             }
         } catch (error) {
             // Manejar errores de red u otros errores
@@ -88,12 +88,78 @@ export const Order = () => {
 
     const idWork = localStorage.getItem("namedmaoooDn3");
 
+    //_______________________________________sales daily______________________________________
 
 
-    const sales = (e) => {
-        const idOrder = +e.target.value
 
-    }
+    const sales = async (e) => {
+        const idOrder = +e.target.value;
+      
+        // Obtén los detalles de la orden (si es necesario)
+        const baseURLOrder = `http://localhost:3030/api/order/${idOrder}`;
+        const token = localStorage.getItem("token");
+      
+        try {
+          const responseOrder = await axios.get(baseURLOrder);
+      
+          if (responseOrder.status !== 200) {
+            console.error(`Error al obtener los detalles de la orden. Código de estado: ${responseOrder.status}`);
+            return null;
+          }
+      
+          const orderDetails = responseOrder.data;
+      
+          // Construye el objeto de datos con los atributos a subir, incluyendo detalles de la orden
+          const data = {
+            CantidadPedidos: 1, // Puedes ajustar la cantidad según tus necesidades
+            TotalPesos: orderDetails.TotalPrecio, // Asumiendo que TotalPrecio es un atributo válido en orderDetails
+            // Otros atributos según sea necesario
+          };
+      
+          // URL de la API para realizar la solicitud POST (ajusta la URL según tu configuración)
+          const baseURLSales = `http://localhost:3030/api/sales`;
+      
+          try {
+            // Realiza la solicitud POST con el objeto de datos
+            const responseSales = await axios.post(baseURLSales, data, {
+              headers: {
+                "Authorization": `Bearer ${token}`
+              }
+            });
+      
+              
+            Swal.fire({
+                icon: 'success',
+                title: 'Muy bien haz completado tu tarea de entregar',
+                text: 'Puedes cancelar el pedido',
+                showConfirmButton: false,
+                timer: 5000
+            }) 
+
+            if (responseSales.status === 201) {
+              // Éxito: Los datos de la venta se subieron con éxito (estatus 201 Created).
+              console.log("Venta registrada con éxito");
+      
+              return responseSales.data; // Opcionalmente, devuelve los datos de la venta creada.
+            } else {
+              // El servidor respondió con un código de estado inesperado.
+              console.error(`estados al registrar la venta. Código de estado: ${responseSales.status}`);
+              return null;
+            }
+          } catch (error) {
+            // Manejar errores de red u otros errores
+            console.error("Error al registrar la venta:", error);
+            return null;
+          }
+        } catch (error) {
+          // Manejar errores al obtener los detalles de la orden
+          console.error("Error al obtener los detalles de la orden:", error);
+          return null;
+        }
+      };
+      
+
+    //_______________________________________to assing worker______________________________________
 
     const [asig, setAsig] = useState('');
     const [asigId, setAsigId] = useState('');
@@ -108,7 +174,7 @@ export const Order = () => {
 
     const Asig = async (e) => {
         e.preventDefault();
-   
+
         const data = {
             EntregadorId: asig,
         };

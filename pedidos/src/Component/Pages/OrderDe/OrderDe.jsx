@@ -79,6 +79,7 @@ export const OrderDe = () => {
             .then((response) => {
                 console.log("Orden creada con éxito:", response.data);
                 localStorage.setItem("buy", true)
+
             })
             .catch((error) => {
                 console.error("Error al crear la orden:", error);
@@ -88,7 +89,6 @@ export const OrderDe = () => {
     // _______________________________ Confirm details _______________________
 
     const details = (e) => {
-
         const Data = {
             NombreProducto: nombreProducto,
             DescripcionProducto: "Ninguna",

@@ -134,7 +134,7 @@ export const Client = () => {
                 console.log("Cliente marcado como inactivo con éxito");
 
                 // Recargar la página después de 1 segundo (puedes ajustar el tiempo)
-               
+
             } else {
                 // El servidor respondió con un código de estado inesperado.
                 console.error(`Error al marcar el cliente como inactivo. Código de estado: ${response.status}`);
@@ -298,9 +298,14 @@ export const Client = () => {
                         <b><p>Fecha de Nacimiento: </p></b><p>{data.FechaNacimiento}</p>
                         <b><p>Telefono: </p></b><p>{data.Telefono}</p>
                     </div>
-                    <button className='add' onClick={(e) => { Inactive(e) }} value={data.Id}>Inactivar Cliente</button>
-                    <button className='buy' onClick={(e) => { Active(e) }} value={data.Id}>Activar Cliente</button>
-                </div>
+
+                    {idWork >= 71 && idWork <= 90
+                        ? <>
+                            <button className='add' onClick={(e) => { Inactive(e) }} value={data.Id}>Inactivar Cliente</button>
+                            <button className='buy' onClick={(e) => { Active(e) }} value={data.Id}>Activar Cliente</button>
+                        </>
+                        : null}
+                </div >
             ))}
         </>
     )

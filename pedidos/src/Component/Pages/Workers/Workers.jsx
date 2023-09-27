@@ -266,16 +266,17 @@ export const Workers = () => {
 
 
             {/* /*___________________________card_________________________ */}
-
-            <div className='cardGeneral'>
-                <div className='cardNewWork' onClick={See}>
-                    <p>+</p>
+            {idWork >= 71 && idWork <= 90
+                ? <div className='cardGeneral'>
+                    <div className='cardNewWork' onClick={See}>
+                        <p>+</p>
+                    </div>
+                    <p>Agregar un trabajador</p>
+                    <div onClick={See}>
+                        <p><b>Total de Empleados: </b>{count}</p>
+                    </div>
                 </div>
-                <p>Agregar un trabajador</p>
-                <div onClick={See}>
-                    <p><b>Total de Empleados: </b>{count}</p>
-                </div>
-            </div>
+                : null}
 
             <div >
                 {inputCharacters.map((data) => (
@@ -291,7 +292,10 @@ export const Workers = () => {
                             <b><p>Tipo de empleado: </p></b><p>{data.TipoEmpleadoId}</p>
                             <b><p>Salario: </p></b><p>{data.Salario}</p>
                         </div>
-                        <button className='add' onClick={(e) => { deleteWorker(e) }} value={data.Id}>Despedir a este empleado</button>
+
+                        {idWork >= 71 && idWork <= 90
+                            ? <button className='add' onClick={(e) => { deleteWorker(e) }} value={data.Id}>Despedir a este empleado</button>
+                            : null}
                         {/* <button className='edit' onClick={(e) => { SeeEdit(e) }} value={data.Id}>Editar</button> */}
                     </div>
                 ))}

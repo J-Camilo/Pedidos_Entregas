@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Animation } from '../../Ui/Animation/Animation';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export const Data = () => {
 
@@ -9,7 +11,6 @@ export const Data = () => {
     document.getElementById("postDataMain").style.display = 'none';
 
     // limplia el formulario
-
     setName("");
     setLastName("");
     setIdNumber("");
@@ -49,10 +50,89 @@ export const Data = () => {
   const handleBirthDateChange = (e) => { setBirthDate(e.target.value); };
   const handlePhoneNumberChange = (e) => { setPhoneNumber(e.target.value); };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault(); // Prevents the default form submission
 
-  // };
+  // _____________________________________past data _________________________
+
+  const [client, setClient] = useState([])
+
+  const baseURLcount = 'http://localhost:3030/api/client';
+
+  useEffect(() => {
+    // Obtener el token del localStorage
+    const token = localStorage.getItem("token");
+
+    // Verificar si hay un token antes de hacer la solicitud
+    if (token) {
+      axios.get(baseURLcount, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
+        .then((response) => {
+          setClient(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      console.log("No hay token disponible. Asegúrate de iniciar sesión.");
+    }
+  }, []);
+
+
+  // _____________________________________past data _________________________
+
+  const uploadUserData = async () => {
+    // Construye un objeto con los datos del usuario
+    const userData = {
+      Nombre: name,
+      Apellidos: lastName,
+      Cedula: idNumber,
+      Direccion: address,
+      Departamento: department,
+      Municipio: municipality,
+      Barrio: neighborhood,
+      FechaNacimiento: birthDate,
+      Telefono: phoneNumber,
+    };
+
+    const baseURL = 'http://localhost:3030/api/client';
+
+    const token = localStorage.getItem("token");
+
+    try {
+      // Realiza la solicitud POST con el objeto de datos y el token
+      const response = await axios.post(baseURL, userData, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      });
+      Swal.fire({
+        icon: 'success',
+        title: 'Haz añadido correctamente los datos',
+        showConfirmButton: false,
+        timer: 700
+      })
+      if (response.status === 201) {
+        console.log("Datos del usuario subidos con éxito");
+
+        // return response.data; 
+      } else {
+        // El servidor respondió con un código de estado inesperado.
+        console.error(`Error al subir los datos del usuario. Código de estado: ${response.status}`);
+        return null;
+      }
+    } catch (error) {
+      // Manejar errores de red u otros errores
+      console.error("Error al subir los datos del usuario:", error);
+      return null;
+    }
+  };
+
+
+
+
+
 
   const idWork = localStorage.getItem("namedmaoooDn3");
 
@@ -106,22 +186,12 @@ export const Data = () => {
             </div>
       }
 
-      <div className='UData'>
-        <h1>Tus datos</h1><hr />
-        <b><p>Nombre: </p></b>
-        <b><p>Apellido: </p></b>
-        <b><p>Cedula: </p></b>
-        <b><p>Direccion: </p></b>
-        <b><p>Departamento: </p></b>
-        <b><p>Municipio: </p></b>
-        <b><p>Barrio: </p></b>
-        <b><p>Fecha de nacimiento: </p></b>
-        <b><p>Telefono: </p></b>
 
-        <button className='buy' onClick={See}>Agregar</button>
-        <button className='add' onClick={deleteLocal}>Cerrar sesion</button>
-
-      </div>
+        <div className='UData'>
+          <button className='buy' onClick={See}>Agregar datos para procesar</button>
+          <button className='add' onClick={deleteLocal}>Cerrar sesion</button>
+        </div>
+      
 
 
       {/* ___________________________post data user_________________________ */}
@@ -129,7 +199,7 @@ export const Data = () => {
       <div className='postDataMain' id='postDataMain'>
         <div className='postData'>
           <h3>Ingresa tus datos</h3><hr />
-          <form>
+          <form onSubmit={uploadUserData}>
             <label htmlFor="name">Nombre</label>
             <input
               type="text"

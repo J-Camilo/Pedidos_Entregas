@@ -99,6 +99,14 @@ export const FuntionLogin = () => {
               window.location.reload();
             }, 2000); // 2000 milisegundos (2 segundos)
           } 
+          // else if (username !== data.Usuario && password !== desencriptado) {
+          //   Swal.fire({
+          //     icon: 'error',
+          //     title: 'Los datos son Incorrectos, vuelve a intentar',
+          //     showConfirmButton: false,
+          //     timer: 1400
+          //   })
+          // }
 
         } catch (error) {
           console.error("Error en desencriptar:", error);
