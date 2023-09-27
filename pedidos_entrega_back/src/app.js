@@ -1,4 +1,4 @@
-import express from "express";
+import express from "express";  
 import config from "./config";
 import cors from "cors";
 import productsRoutes from "./routes/products.route";
@@ -8,7 +8,7 @@ import workersRoutes from "./routes/work.router";
 import clientRoutes from "./routes/client.router";
 import userRoutes from "./routes/user.router";
 import carRoutes from "./routes/car.controller";
-import detailCarRoutes from "./routes/detailsCar.router";
+import detailCarRoutes from "./routes/detailsCar.router"; 
 import orderRoutes from "./routes/order.router";
 import detailOrderRoutes from "./routes/detailsOrder.router";
 import salesRoutes from "./routes/dailySale.router";
@@ -44,11 +44,11 @@ app.use('/api', orderRoutes);
 app.use('/api', detailOrderRoutes);
 
 //_____________ventas diarias___________
-app.use('/api', salesRoutes);
-
+app.use('/api', salesRoutes); 
+ 
 //_____________municipio y departamento___________
 app.use('/api', muniRoutes);
 app.use('/api', depRoutes);
 
 
-export default app;
+export default app; 

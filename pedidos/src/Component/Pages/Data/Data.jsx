@@ -1,13 +1,9 @@
 import React, { useState } from 'react'
+import { Animation } from '../../Ui/Animation/Animation';
 
 export const Data = () => {
 
   const See = () => { document.getElementById("postDataMain").style.display = 'flex'; }
-
-
-  
-
-
 
   const Ocult = () => {
     document.getElementById("postDataMain").style.display = 'none';
@@ -23,6 +19,12 @@ export const Data = () => {
     setNeighborhood("");
     setBirthDate("");
     setPhoneNumber("");
+  }
+
+  const deleteLocal = () => {
+    // Eliminar todos los elementos del localStorage
+    localStorage.clear();
+    window.location.reload();
   }
 
   // trae los datos de los inputs
@@ -51,46 +53,61 @@ export const Data = () => {
   //   e.preventDefault(); // Prevents the default form submission
 
   // };
+
+  const idWork = localStorage.getItem("namedmaoooDn3");
+
   return (
     <>
+      <Animation />
 
       {/* /*___________________________NAV_________________________ */}
 
-      {/* Cliente */}
-      <div className='ContentNavMain'>
-        <h1>Pedidos&Entregas</h1>
+      {idWork >= 71 && idWork <= 90 ?
+        <div className='ContentNavMain'>
+          <h1>Pedidos&Entregas</h1>
+          <a href="/pedidos"><p className="textLink">Pedidos</p></a>
+          <a href="/empleados"><p className="textLink">Empleados</p></a>
+          <a href="/ventas"><p className="textLink">Ventas</p></a>
+          <a href="/clientes"><p className="textLink">Clientes</p></a>
+          <a href="/datos"><p className="textLink">Tus Datos</p></a>
+          <a href="/productos"><p className="textLink">Productos</p></a>
+        </div>
 
-        <a href="/pedidos"><p className="textLink">Pedidos</p></a>
-        <a href="/productos"><p className="textLink">Productos</p></a>
-        <a href="/carrito"><p className="textLink">Carrito</p></a>
-        <a href="/datos"><p className="textLink">Tus Datos</p></a>
-        <a href="/login"><p className="textLink">Login</p></a>
+        : idWork >= 91 && idWork <= 98
+          ?
+          <div className='ContentNavMain'>
+            <h1>Pedidos&Entregas</h1>
+            <a href="/pedidos"><p className="textLink">Pedidos</p></a>
+            <a href="/ventas"><p className="textLink">Ventas</p></a>
+            <a href="/clientes"><p className="textLink">Clientes</p></a>
+            <a href="/datos"><p className="textLink">Tus Datos</p></a>
+            <a href="/productos"><p className="textLink">Productos</p></a>
+          </div>
+          : idWork >= 1 && idWork <= 70
+            ?
+            <div className='ContentNavMain'>
+              <h1>Pedidos&Entregas</h1>
+              <a href="/pedidos"><p className="textLink">Pedidos</p></a>
+              <a href="/ventas"><p className="textLink">Ventas</p></a>
+              <a href="/clientes"><p className="textLink">Clientes</p></a>
+              <a href="/datos"><p className="textLink">Tus Datos</p></a>
+              <a href="/productos"><p className="textLink">Productos</p></a>
+            </div>
+            :
+            <div className='ContentNavMain'>
+              <h1>Pedidos&Entregas</h1>
 
-      </div>
+              <a href="/pedidos"><p className="textLink">Pedidos</p></a>
+              <a href="/productos"><p className="textLink">Productos</p></a>
+              <a href="/carrito"><p className="textLink">Carrito</p></a>
+              <a href="/datos"><p className="textLink">Tus Datos</p></a>
+              <a href="/login"><p className="textLink">Login</p></a>
 
-      {/* Empleado
-    <div className='ContentNavMain'>
-    <h1>Pedidos&Entregas</h1>
-        <a href="/pedidos"><p className="textLink">Pedidos</p></a>
-        <a href="/ventas"><p className="textLink">Ventas</p></a>
-        <a href="/clientes><p className="textLink">Clientes</p></a>
-        <a href="/datos"><p className="textLink">Tus Datos</p></a>
-        <a href="/productos"><p className="textLink">Productos</p></a>
-    </div>
-
-    {/* administrador 
-    <div className='ContentNavMain'>
-    <h1>Pedidos&Entregas</h1>
-        <a href="/pedidos"><p className="textLink">Pedidos</p></a>
-        <a href="/empleados"><p className="textLink">Empleados</p></a>
-        <a href="/ventas"><p className="textLink">Ventas</p></a>
-        <a href="/clientes"><p className="textLink">Clientes</p></a>
-        <a href="/datos"><p className="textLink">Tus Datos</p></a>
-        <a href="/productos"><p className="textLink">Productos</p></a>
-    </div> */}
+            </div>
+      }
 
       <div className='UData'>
-        <h2>Tus datos</h2><hr />
+        <h1>Tus datos</h1><hr />
         <b><p>Nombre: </p></b>
         <b><p>Apellido: </p></b>
         <b><p>Cedula: </p></b>
@@ -102,6 +119,8 @@ export const Data = () => {
         <b><p>Telefono: </p></b>
 
         <button className='buy' onClick={See}>Agregar</button>
+        <button className='add' onClick={deleteLocal}>Cerrar sesion</button>
+
       </div>
 
 
@@ -109,7 +128,7 @@ export const Data = () => {
 
       <div className='postDataMain' id='postDataMain'>
         <div className='postData'>
-          <h2>Ingresa tus datos</h2><hr />
+          <h3>Ingresa tus datos</h3><hr />
           <form>
             <label htmlFor="name">Nombre</label>
             <input

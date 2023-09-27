@@ -6,7 +6,7 @@ const router = Router();
 //routers
 router.get('/orderDetail', getOrderDetail);
 router.post('/orderDetail', verifyToken, CreateOrderDetail);
-router.get('/orderDetail/count', CountController);
+router.get('/orderDetail/count', CountController); 
 router.get('/orderDetail/:id', verifyToken, IdgetOrderDetail);
 router.delete('/orderDetail/:id', verifyToken, DeleteOrderDetail);
 router.put('/orderDetail/:id', verifyToken, UpdateOrderDetail);

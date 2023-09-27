@@ -71,7 +71,7 @@ export default {
     createNewOrder: "INSERT INTO Pedido ( NumeroOrden, FechaRegistro, TotalPrecio, TotalIva, Departamento, Ciudad, Barrio, DireccionEntrega, ClienteId, EmpleadoId,  EntregadorId, Observacion) VALUES (@NumeroOrden, GETDATE(), @TotalPrecio, @TotalIva, @Departamento, @Ciudad, @Barrio, @DireccionEntrega, @ClienteId, @EmpleadoId,  @EntregadorId, @Observacion)",
     IdOrder: "SELECT * FROM Pedido WHERE Id = @id",
     CountOrder: "SELECT COUNT(*) FROM Pedido",
-    // UpdateOrder: unused
+    UpdateOrder: "UPDATE Pedido SET NumeroOrden = @NumeroOrden, TotalPrecio = @TotalPrecio, TotalIva = @TotalIva, Departamento = @Departamento, Ciudad = @Ciudad, Barrio = @Barrio, DireccionEntrega = @DireccionEntrega, ClienteId = @ClienteId,  EmpleadoId = @EmpleadoId,  EntregadorId = @EntregadorId, Observacion = @Observacion WHERE Id = @id",
     DeleteOrder: "DELETE FROM Pedido WHERE Id = @id",
 
     //detailOrder

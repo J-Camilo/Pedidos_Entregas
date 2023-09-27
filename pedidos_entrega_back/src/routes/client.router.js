@@ -12,3 +12,4 @@ router.delete('/client/:id',verifyToken, DeleteClientId );
 router.put('/client/:id',verifyToken, UpdateClient );
 
 export default router;
+ 

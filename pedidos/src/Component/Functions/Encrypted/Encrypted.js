@@ -29,7 +29,7 @@ const derivacionDeClaveBasadaEnContraseña  = async (contraseña, sal, iteracion
     );
 }
 
-//____________________________________funcion de encriptar
+//____________________________________funcion de encriptar________________________________
 
 export const encriptar = async (contraseña, textoPlano) => {
     const encoder = new TextEncoder();
@@ -51,7 +51,7 @@ export const encriptar = async (contraseña, textoPlano) => {
 
 
 
-//_____________________________________________funcion de desencriptar
+//_____________________________________________funcion de desencriptar________________________________
 
 export const desencriptar = async (contraseña, encriptadoEnBase64) => {
     const decoder = new TextDecoder();

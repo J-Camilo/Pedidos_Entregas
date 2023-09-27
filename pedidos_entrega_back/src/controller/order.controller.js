@@ -98,24 +98,24 @@ export const CountController = async (req, res) => {
 
 
 // actualizar cada pedido AFK
-// export const UpdateOrder = async (req, res) => {
-//     let {  NumeroOrden, TotalPrecio, TotalIva, Departamento, Ciudad, Barrio, DireccionEntrega, ClienteId, EmpleadoId, EntregadorId, Observacion  } = req.body
-//     const { id } = req.params;
-//     const pool = await webConnection();
-//     await pool
-//         .request()
-//         .input("Id", sql.Int, id)
-//         .input("NumeroOrden", sql.VarChar, NumeroOrden)
-//         .input("TotalPrecio", sql.Decimal, TotalPrecio)
-//         .input("TotalIva", sql.Decimal, TotalIva)
-//         .input("Departamento", sql.VarChar, Departamento)
-//         .input("Ciudad", sql.VarChar, Ciudad)
-//         .input("Barrio", sql.VarChar, Barrio)
-//         .input("DireccionEntrega", sql.VarChar, DireccionEntrega)
-//         .input("ClienteId", sql.Int, ClienteId)
-//         .input("EmpleadoId", sql.Int, EmpleadoId)
-//         .input("EntregadorId", sql.Int, EntregadorId)
-//         .input("Observacion", sql.Text, Observacion)
-//         .query(query.UpdateOrder);
-//     res.json({ NumeroOrden, TotalPrecio, TotalIva, Departamento, Ciudad, Barrio, DireccionEntrega, ClienteId, EmpleadoId, EntregadorId, Observacion });
-// }
+export const UpdateOrder = async (req, res) => {
+    let {  NumeroOrden, TotalPrecio, TotalIva, Departamento, Ciudad, Barrio, DireccionEntrega, ClienteId, EmpleadoId, EntregadorId, Observacion  } = req.body
+    const { id } = req.params;
+    const pool = await webConnection();
+    await pool
+        .request()
+        .input("Id", sql.Int, id)
+        .input("NumeroOrden", sql.VarChar, NumeroOrden)
+        .input("TotalPrecio", sql.Decimal, TotalPrecio)
+        .input("TotalIva", sql.Decimal, TotalIva)
+        .input("Departamento", sql.VarChar, Departamento)
+        .input("Ciudad", sql.VarChar, Ciudad)
+        .input("Barrio", sql.VarChar, Barrio)
+        .input("DireccionEntrega", sql.VarChar, DireccionEntrega)
+        .input("ClienteId", sql.Int, ClienteId)
+        .input("EmpleadoId", sql.Int, EmpleadoId)
+        .input("EntregadorId", sql.Int, EntregadorId) 
+        .input("Observacion", sql.Text, Observacion)
+        .query(query.UpdateOrder);
+    res.json({ NumeroOrden, TotalPrecio, TotalIva, Departamento, Ciudad, Barrio, DireccionEntrega, ClienteId, EmpleadoId, EntregadorId, Observacion });
+}

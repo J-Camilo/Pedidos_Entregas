@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Products.css';
 import axios from 'axios';
+import { Animation } from '../../Ui/Animation/Animation';
+import Swal from 'sweetalert2';
 
 export const Products = (props) => {
 
@@ -16,10 +18,41 @@ export const Products = (props) => {
         setRandomN(numeroOrden);
     }
     // ___________________________ car ___________________________
-    const SeeCar = (e) => {
-        document.getElementById("postCarMain").style.display = 'flex';
-        JSON.stringify(localStorage.setItem("SUQgZGUgcHJvZHVjdG8=", e.target.value))
-    }
+
+    const [products_2, setProducts_2] = useState([])
+
+    const add = (Id, Codigo, Nombre, Marca, Categoria, CantidadDisponible, Precio, Iva) => {
+        const existingCart = JSON.parse(localStorage.getItem("car")) || [];
+
+        const isProductInCart = existingCart.some(product => product.id === Id);
+
+        if (!isProductInCart) {
+            const newProduct = {
+                id: Id,
+                codigo: Codigo,
+                nombre: Nombre,
+                marca: Marca,
+                categoria: Categoria,
+                disponible: CantidadDisponible,
+                precio: Precio,
+                iva: Iva
+            };
+
+            const updatedCart = [...existingCart, newProduct];
+            localStorage.setItem("car", JSON.stringify(updatedCart));
+            setProducts_2(prevProducts => [...prevProducts, newProduct]);
+            console.log("Producto agregado al carrito");
+            Swal.fire({
+                icon: 'success',
+                title: 'Haz añadido este producto',
+                showConfirmButton: false,
+                timer: 700
+            })
+        } else {
+            console.log("Producto ya añadido al carrito");
+        }
+    };
+
 
     // ___________________________brand ___________________________
 
@@ -106,16 +139,6 @@ export const Products = (props) => {
     const [selectedCategory, setSelectedCategory] = useState(''); // Estado para la categoría seleccionada.
     const inputLoad = (event) => { setText(event.target.value); };
     // const onChangeCatergory = (e) => sett(e.target.value);
-
-
-    //_______________________________________Car______________________________________
-    // const post Car = () => {
-
-    // }
-
-
-
-
 
 
     const baseURL = 'http://localhost:3030/api/products';
@@ -284,7 +307,7 @@ export const Products = (props) => {
                 // Recargar la página después de 1 segundo (puedes ajustar el tiempo)
                 setTimeout(() => {
                     window.location.reload();
-                }, 1000);
+                }, 2000);
             } else {
                 // El servidor respondió con un código de estado inesperado.
                 console.error(`Error al eliminar el producto. Código de estado: ${response.status}`);
@@ -320,7 +343,7 @@ export const Products = (props) => {
             .catch((error) => {
                 console.error(error);
             });
-    }, []); 
+    }, []);
 
 
     // const inputCharacters = characters.filter((character) => character.Nombre.toLowerCase().includes(text.toLowerCase()))
@@ -343,41 +366,59 @@ export const Products = (props) => {
         filterProducts();
     }, [characters, text, selectedBrand, selectedCategory]);
 
+
+
+    const idWork = localStorage.getItem("namedmaoooDn3");
+
     return (
         <>
+            <Animation />
 
             {/* /*___________________________NAV_________________________ */}
 
-            {/* Cliente */}
-            <div className='ContentNavMain'>
-                <h1>Pedidos&Entregas</h1>
-                <a href="/pedidos"><p className="textLink">Pedidos</p></a>
-                <a href="/productos"><p className="textLink">Productos</p></a>
-                <a href="/carrito"><p className="textLink">Carrito</p></a>
-                <a href="/datos"><p className="textLink">Tus Datos</p></a>
-                <a href="/login"><p className="textLink">Login</p></a>
-            </div>
+            {idWork >= 71 && idWork <= 90 ?
+                <div className='ContentNavMain'>
+                    <h1>Pedidos&Entregas</h1>
+                    <a href="/pedidos"><p className="textLink">Pedidos</p></a>
+                    <a href="/empleados"><p className="textLink">Empleados</p></a>
+                    <a href="/ventas"><p className="textLink">Ventas</p></a>
+                    <a href="/clientes"><p className="textLink">Clientes</p></a>
+                    <a href="/datos"><p className="textLink">Tus Datos</p></a>
+                    <a href="/productos"><p className="textLink">Productos</p></a>
+                </div>
 
-            {/* Empleado
-            <div className='ContentNavMain'>
-            <h1>Pedidos&Entregas</h1>
-                <a href="/pedidos"><p className="textLink">Pedidos</p></a>
-                <a href="/ventas"><p className="textLink">Ventas</p></a>
-                <a href="/clientes><p className="textLink">Clientes</p></a>
-                <a href="/datos"><p className="textLink">Tus Datos</p></a>
-                <a href="/productos"><p className="textLink">Productos</p></a>
-            </div>
+                : idWork >= 91 && idWork <= 98
+                    ?
+                    <div className='ContentNavMain'>
+                        <h1>Pedidos&Entregas</h1>
+                        <a href="/pedidos"><p className="textLink">Pedidos</p></a>
+                        <a href="/ventas"><p className="textLink">Ventas</p></a>
+                        <a href="/clientes"><p className="textLink">Clientes</p></a>
+                        <a href="/datos"><p className="textLink">Tus Datos</p></a>
+                        <a href="/productos"><p className="textLink">Productos</p></a>
+                    </div>
+                    : idWork >= 1 && idWork <= 70
+                        ?
+                        <div className='ContentNavMain'>
+                            <h1>Pedidos&Entregas</h1>
+                            <a href="/pedidos"><p className="textLink">Pedidos</p></a>
+                            <a href="/ventas"><p className="textLink">Ventas</p></a>
+                            <a href="/clientes"><p className="textLink">Clientes</p></a>
+                            <a href="/datos"><p className="textLink">Tus Datos</p></a>
+                            <a href="/productos"><p className="textLink">Productos</p></a>
+                        </div>
+                        :
+                        <div className='ContentNavMain'>
+                            <h1>Pedidos&Entregas</h1>
 
-            {/* administrador 
-            <div className='ContentNavMain'>
-            <h1>Pedidos&Entregas</h1>
-                <a href="/pedidos"><p className="textLink">Pedidos</p></a>
-                <a href="/empleados"><p className="textLink">Empleados</p></a>
-                <a href="/ventas"><p className="textLink">Ventas</p></a>
-                <a href="/clientes"><p className="textLink">Clientes</p></a>
-                <a href="/datos"><p className="textLink">Tus Datos</p></a>
-                <a href="/productos"><p className="textLink">Productos</p></a>
-            </div> */}
+                            <a href="/pedidos"><p className="textLink">Pedidos</p></a>
+                            <a href="/productos"><p className="textLink">Productos</p></a>
+                            <a href="/carrito"><p className="textLink">Carrito</p></a>
+                            <a href="/datos"><p className="textLink">Tus Datos</p></a>
+                            <a href="/login"><p className="textLink">Login</p></a>
+
+                        </div>
+            }
 
 
             {/* ______________________________________Filers____________________________________ */}
@@ -386,11 +427,12 @@ export const Products = (props) => {
 
                 {/* ___________________________Category_________________________ */}
 
-                <div className='AddNew' onClick={SeeCategory}>
+                {idWork >= 71 && idWork <= 90
+                    ? <div className='AddNew' onClick={SeeCategory}>
                     <p>+</p>
-                </div>
+                </div> : null}
 
-                <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+                <select className="Input" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
                     <option value="">Todas las categorías</option>
 
                     {charactersC.map((data) => (
@@ -403,12 +445,12 @@ export const Products = (props) => {
                 {/* ___________________________Search_________________________ */}
 
                 <div>
-                    <input type="search" className='InputSeacrh' placeholder='Busca el producto' value={text} onChange={inputLoad} id="" />
+                    <input type="search" className='Input' placeholder='Busca el producto' value={text} onChange={inputLoad} id="" />
                 </div>
 
                 {/* ___________________________Brand_________________________ */}
 
-                <select value={selectedBrand} onChange={(e) => setSelectedBrand(e.target.value)}>
+                <select className="Input" value={selectedBrand} onChange={(e) => setSelectedBrand(e.target.value)}>
                     <option value="">Todas las marcas</option>
                     {charactersB.map((data) => (
                         <>
@@ -416,10 +458,10 @@ export const Products = (props) => {
                         </>
                     ))}
                 </select>
-
-                <div className='AddNew' onClick={SeeBrand}>
-                    <p>+</p>
-                </div>
+                {idWork >= 71 && idWork <= 90
+                    ? <div className='AddNew' onClick={SeeBrand}>
+                        <p>+</p>
+                    </div> : null}
             </div>
 
 
@@ -430,26 +472,33 @@ export const Products = (props) => {
                     {/* ___________________________Card_________________________ */}
                     < div className='ContentCardMain'>
 
-                        <div className='cardProduct'>
-                            <div className='CardAddSon' onClick={See}>
-                                <p>+</p>
-                            </div>
-                            <p>Agregar producto</p>
-                        </div>
+                        {idWork >= 71 && idWork <= 90
+                            ? <div className='cardProduct'>
+                                <div className='CardAddSon' onClick={See}>
+                                    <p>+</p>
+                                </div>
+                                <p>Agregar producto</p>
+                            </div> : null}
 
                         {/* se recorre con map para optener todos los datos ya filtrados */}
                         {filteredCharacters.map((data) => (
-                            <div className='cardProduct' key={data.id}>
+                            <div className='cardProduct' key={data.Id}>
                                 <b><p>Nombre: </p></b><p>{data.Nombre}</p>
                                 <b><p>Marca: </p></b><p>{data.Marca}</p>
                                 <b><p>Categoria: </p></b><p>{data.Categoria}</p>
                                 <b><p>Cantidad: </p></b><p>{data.CantidadDisponible}</p>
                                 <b><p>Precio: </p></b><p>{data.Precio}</p>
 
-                                <button className='add' onClick={(e) => { SeeCar(e) }} value={data.Id}>Anadir al carrito</button>
-                                <button className='buy'>Comprar</button>
-                                <button className='edit' onClick={(e) => { deleteProduct(e) }} value={data.Id}>Eliminar</button>
-                                <button className='edit' onClick={(e) => { SeeEdit(e) }} value={data.Id}>Editar</button>
+                                <button className='add' onClick={(e) => { add(data.Id, data.Codigo, data.Nombre, data.Marca, data.Categoria, data.CantidadDisponible, data.Precio, data.Iva) }} value={{ 'id': data.Id, "Coodigo": data.Codigo, 'Nombre': data.Nombre, 'Marca': data.Marca, 'Categoria': data.Categoria, 'CantidadDisponible': data.CantidadDisponible, 'Precio': data.Precio, "Iva": data.Iva }}>Anadir al carrito</button>
+
+                                {idWork >= 71 && idWork <= 90
+                                    ?
+                                    <>
+                                        <button className='edit' onClick={(e) => { deleteProduct(e) }} value={data.Id}>Eliminar</button>
+                                        <button className='edit' onClick={(e) => { SeeEdit(e) }} value={data.Id}>Editar</button>
+                                    </>
+                                    : null
+                                }
                             </div>
                         ))}
                     </div >
@@ -462,7 +511,7 @@ export const Products = (props) => {
             <div className='postDataMain' id='postDataMain'>
                 <div className='postData'>
                     <form onSubmit={createProduct}>
-                        <h2>Ingresa el producto</h2><hr />
+                        <h3>Ingresa el producto</h3><hr />
                         <label htmlFor="nombre">numero unico</label>
                         <input
                             type="text"
@@ -583,7 +632,7 @@ export const Products = (props) => {
             <div className="postDataMain" id='postBrandMain'>
                 <div className="postData">
                     <form onSubmit={createBrand}>
-                        <h2>Ingresa la Marca</h2><hr />
+                        <h3>Ingresa la Marca</h3><hr />
                         <label htmlFor="precio">Nombre:</label>
                         <input
                             type="text"
@@ -606,7 +655,7 @@ export const Products = (props) => {
             <div className="postDataMain" id='postCategoryMain'>
                 <div className="postData">
                     <form onSubmit={createCategory}>
-                        <h2>Ingresa la Cateogria</h2><hr />
+                        <h3>Ingresa la Cateogria</h3><hr />
                         <label htmlFor="precio">Nombre:</label>
                         <input
                             type="text"
@@ -623,35 +672,13 @@ export const Products = (props) => {
             </div>
 
 
-            {/* ___________________________Add car_________________________ */}
-
-
-            <div className="postDataMain" id='postCarMain'>
-                <div className="postData">
-                    <h2>Agregar al carrito</h2><hr />
-                    {/* <form onSubmit="">
-                        <h2>Ingresa la Cateogria</h2><hr />
-                        <label htmlFor="precio">Nombre:</label>
-                        <input
-                            type="text"
-                            name='Nombre'
-                            value={TextGeneral}
-                            onChange={onChangeTextGeneral}
-                            required
-                        /><br />
-                    </form> */}
-                    <button className='add' onClick={Ocult}>Salir de esta vista</button>
-                </div>
-            </div>
-
-
             {/* { Token } */}
             {/* ___________________________Edit________________________ */}
 
             <div className="postDataMain" id='postDataMainEdit'>
                 <div className='postData'>
                     <form onSubmit={update} >
-                        <h2>Edita este producto</h2><hr />
+                        <h3>Edita este producto</h3><hr />
 
                         <label htmlFor="nombre">Nombre</label>
                         <input

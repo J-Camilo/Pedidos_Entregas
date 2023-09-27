@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Animation } from '../../Ui/Animation/Animation';
 
 export const Workers = () => {
 
@@ -75,7 +76,7 @@ export const Workers = () => {
 
             if (response.status === 204) {
                 // Éxito: El producto se eliminó con éxito (estatus 204 No Content).
-                console.log("pedido cancelado con éxito");
+                console.log("eliminando trabajador");
 
                 // Recargar la página después de 1 segundo (puedes ajustar el tiempo)
                 setTimeout(() => {
@@ -83,12 +84,42 @@ export const Workers = () => {
                 }, 1000);
             } else {
                 // El servidor respondió con un código de estado inesperado.
-                console.error(`Error al cancelar el pedido. Código de estado: ${response.status}`);
+                console.error(`Error al eliminar trabajador: ${response.status}`);
             }
         } catch (error) {
             // Manejar errores de red u otros errores
-            console.error("Error al cancelar el pedido:", error);
+            console.error("Error al eliminar trabajador:", error);
         }
+
+
+
+        // Swal.fire({
+        //     title: '¿Estas seguro?',
+        //     icon: 'warning',
+        //     showCancelButton: true,
+        //     confirmButtonColor: '#3085d6',
+        //     cancelButtonColor: '#d33',
+        //     confirmButtonText: '!Si quiero!',
+        //     cancelButtonText: 'Cancelar',
+        //     buttonsStyling: false,
+        //     customClass: {
+        //         confirmButton: "buy",
+        //         cancelButton: "add"
+        //     }
+        // }).then((result) => {
+        //     if (result.isConfirmed) {
+        //         Swal.fire({
+        //             icon: 'success',
+        //             title: 'Se ha eliminado el producto del carrito',
+        //             showConfirmButton: false,
+        //             timer: 1400
+        //         })
+
+        //     } else {
+        //         console.log("No se pudo eliminar el producto");
+        //     }
+        //     window.location.reload()
+        // })
     };
 
 
@@ -173,26 +204,63 @@ export const Workers = () => {
         }
     };
 
+    const idWork = localStorage.getItem("namedmaoooDn3");
 
     return (
-
         <>
+            <Animation />
+
             {/* /*___________________________NAV_________________________ */}
-            <div className='ContentNavMain'>
-                <h1>Pedidos&Entregas</h1>
-                <a href="/pedidos"><p className="textLink">Pedidos</p></a>
-                <a href="/empleados"><p className="textLink">Empleados</p></a>
-                <a href="/ventas"><p className="textLink">Ventas</p></a>
-                <a href="/clientes"><p className="textLink">Clientes</p></a>
-                <a href="/datos"><p className="textLink">Tus Datos</p></a>
-                <a href="/productos"><p className="textLink">Productos</p></a>
-            </div>
+            {idWork >= 71 && idWork <= 90 ?
+                <div className='ContentNavMain'>
+                    <h1>Pedidos&Entregas</h1>
+                    <a href="/pedidos"><p className="textLink">Pedidos</p></a>
+                    <a href="/empleados"><p className="textLink">Empleados</p></a>
+                    <a href="/ventas"><p className="textLink">Ventas</p></a>
+                    <a href="/clientes"><p className="textLink">Clientes</p></a>
+                    <a href="/datos"><p className="textLink">Tus Datos</p></a>
+                    <a href="/productos"><p className="textLink">Productos</p></a>
+                </div>
+
+                : idWork >= 91 && idWork <= 98
+                    ?
+                    <div className='ContentNavMain'>
+                        <h1>Pedidos&Entregas</h1>
+                        <a href="/pedidos"><p className="textLink">Pedidos</p></a>
+                        <a href="/ventas"><p className="textLink">Ventas</p></a>
+                        <a href="/clientes"><p className="textLink">Clientes</p></a>
+                        <a href="/datos"><p className="textLink">Tus Datos</p></a>
+                        <a href="/productos"><p className="textLink">Productos</p></a>
+                    </div>
+                    : idWork >= 1 && idWork <= 70
+                        ?
+                        <div className='ContentNavMain'>
+                            <h1>Pedidos&Entregas</h1>
+                            <a href="/pedidos"><p className="textLink">Pedidos</p></a>
+                            <a href="/ventas"><p className="textLink">Ventas</p></a>
+                            <a href="/clientes"><p className="textLink">Clientes</p></a>
+                            <a href="/datos"><p className="textLink">Tus Datos</p></a>
+                            <a href="/productos"><p className="textLink">Productos</p></a>
+                        </div>
+                        :
+                        <div className='ContentNavMain'>
+                            <h1>Pedidos&Entregas</h1>
+
+                            <a href="/pedidos"><p className="textLink">Pedidos</p></a>
+                            <a href="/productos"><p className="textLink">Productos</p></a>
+                            <a href="/carrito"><p className="textLink">Carrito</p></a>
+                            <a href="/datos"><p className="textLink">Tus Datos</p></a>
+                            <a href="/login"><p className="textLink">Login</p></a>
+
+                        </div>
+            }
+
 
             {/* /*___________________________filters_________________________ */}
 
             <div className='filtersMain'>
                 <div>
-                    <input type="search" className='InputSeacrh' placeholder='Busca al empleado por su nombre' value={text} onChange={inputLoad} id="" />
+                    <input type="search" className='Input' placeholder='Busca por su nombre' value={text} onChange={inputLoad} id="" />
                 </div>
             </div>
 
